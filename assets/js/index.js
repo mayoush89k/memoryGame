@@ -12,8 +12,8 @@ function updateWrongGuessCount(a, b) {
     wrongGuess.textContent++;
   }
 }
+// Mira ^^
 
-// Mira
 //Jihad Work .....
 const cards = document.querySelectorAll(".memory-card");
 const guessCount = document.getElementById("guessCount");
@@ -38,7 +38,6 @@ function flipCard() {
   console.log("comp: ", comp);
 }
 
-
 // Add click event listeners directly to each card
 cards.forEach((card) => {
   card.addEventListener("click", flipCard);
@@ -49,7 +48,8 @@ function updateGuessCount() {
  guessCount.textContent++;
 }
 
-// Jihad work
+// Jihad work ^^^^...............................
+
 // May
 //save all cards
 const gameCards = document.querySelector(".memory-game");
@@ -99,3 +99,4 @@ function resetSelection() {
   firstCard = null;
   secondCard = null;
 }
+

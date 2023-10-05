@@ -7,8 +7,8 @@ function resetGame() {
 }
 
 const wrongGuess = document.getElementById("wrongGuessCount");
-function updateWrongGuessCount(a, b) {
-  if (compareCards(a, b) == false) {
+function updateWrongGuessCount(compareVal) {
+  if (compareVal == false) {
     wrongGuess.textContent++;
   }
 }
@@ -19,6 +19,12 @@ const cards = document.querySelectorAll(".memory-card");
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
+function resetSelection() {
+  lockBoard = false;
+  hasFlippedCard = false;
+  firstCard = null;
+  secondCard = null;
+}
 
 function flipCard() {
   if (lockBoard || this === firstCard) return;
@@ -81,10 +87,3 @@ function compareCards(a, b) {
  * if 2 cards are slected
  * pervent other cards form being selectable
  */
-
-function resetSelection() {
-  busy = false;
-  cardFlipped = false;
-  firstCard = null;
-  secondCard = null;
-}

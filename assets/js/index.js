@@ -90,3 +90,13 @@ function resetSelection() {
 }
 
 function flipCard(e) {}
+
+//Mira
+
+  const wrongGuess= document.getElementById("wrongGuessCount")
+  function updateWrongGuessCount(a, b) {
+    if (compareCards(a, b) == false) {
+      wrongGuess.textContent++; 
+    };}
+   
+//Mira 

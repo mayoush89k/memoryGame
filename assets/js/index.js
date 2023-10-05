@@ -1,10 +1,10 @@
-// Mira 
+// Mira
 const resetCardGame = document.getElementById("resetButton");
 resetCardGame.addEventListener("click", resetGame);
 
 function resetGame() {
-    window.location.reload()
-    };
+  window.location.reload();
+}
 
 // Mira
 //Jihad Work .....
@@ -50,6 +50,7 @@ console.log("cards: ", cards);
 
 cards.forEach((card) => {
   console.log(card.getAttributeNode(["data-name"]).textContent);
+  // add flag: flipped = false
 });
 
 // compare 2 cards
@@ -61,26 +62,25 @@ function compareCards(a, b) {
 }
 
 /**
+ *  click -> if(!busy) if(!flipped) -- > ( timeout )->  compare ->
+ *  compare -> add Guess () + keepimgsFlipped --> check if all are flipped (Game Won)
+ *  ->
+ */
+
+/**
  * if 2 cards are slected
  * pervent other cards form being selectable
  */
-let canClick = true;
 
-function cardClickHandler(event) {
-  if (!canClick) {
-    return;
-  }
-  console.log(event);
+let busy = false; // there are 2 cards being compared
+let firstCard, secondCard;
+let cardFlipped = false; // there is 1 card flipped
 
-  // Your card click logic goes here
-
-  canClick = false;
-
-  // Set a timeout to re-enable clicking after a certain duration (for example, 1 second)
-  setTimeout(() => {
-    canClick = true;
-  }, 1000);
+function resetSelection() {
+  busy = false;
+  cardFlipped = false;
+  firstCard = null;
+  secondCard = null;
 }
-cards.forEach((card) => {
-  card.addEventListener("click", cardClickHandler);
-});
+
+function flipCard(e) {}

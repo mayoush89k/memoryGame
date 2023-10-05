@@ -6,6 +6,13 @@ function resetGame() {
   window.location.reload();
 }
 
+const wrongGuess = document.getElementById("wrongGuessCount");
+function updateWrongGuessCount(a, b) {
+  if (compareCards(a, b) == false) {
+    wrongGuess.textContent++;
+  }
+}
+
 // Mira
 //Jihad Work .....
 const cards = document.querySelectorAll(".memory-card");
@@ -23,6 +30,9 @@ function flipCard() {
     firstCard = this;
     return;
   }
+  secondCard = this;
+  let comp = compareCards(firstCard, secondCard);
+  console.log("comp: ", comp);
 }
 // Add click event listeners directly to each card
 cards.forEach((card) => {
@@ -34,15 +44,15 @@ cards.forEach((card) => {
 const gameCards = document.querySelector(".memory-game");
 const frontImages = [...cards];
 // remove cards from parent section
-cards.forEach(card => {
-    gameCards.removeChild(card)
-})
+cards.forEach((card) => {
+  gameCards.removeChild(card);
+});
 // re-Add cards to parent but shuffled order
-cards.forEach(card => {
-    const random = (Math.random() * (frontImages.length - 1)).toFixed();
-    gameCards.appendChild(frontImages[random])
-    frontImages.splice(random,1)
-})
+cards.forEach((card) => {
+  const random = (Math.random() * (frontImages.length - 1)).toFixed();
+  gameCards.appendChild(frontImages[random]);
+  frontImages.splice(random, 1);
+});
 
 // May
 // zaid's work ******************
@@ -78,15 +88,3 @@ function resetSelection() {
   firstCard = null;
   secondCard = null;
 }
-
-function flipCard(e) {}
-
-//Mira
-
-  const wrongGuess= document.getElementById("wrongGuessCount")
-  function updateWrongGuessCount(a, b) {
-    if (compareCards(a, b) == false) {
-      wrongGuess.textContent++; 
-    };}
-   
-//Mira 

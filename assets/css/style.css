@@ -69,7 +69,7 @@ h1 {
     width: 100%;
     position: absolute;
     object-fit: cover;
-    backface-visibility: visible;
+    backface-visibility: hidden;
 }
 
 .memory-card:active {

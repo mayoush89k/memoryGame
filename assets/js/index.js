@@ -17,6 +17,7 @@ function updateWrongGuessCount(compareVal) {
 //Jihad Work .....
 const cards = document.querySelectorAll(".memory-card");
 const guessCount = document.getElementById("guessCount");
+let guessTotalCounter = 0;
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
@@ -43,17 +44,18 @@ function flipCard() {
   console.log("comp: ", comp);
   if (comp) {
     // both cards match
-    // updateGuessCount();
+    updateGuessCount();
     firstCard.removeEventListener("click", flipCard);
     secondCard.removeEventListener("click", flipCard);
     resetSelection();
     found++;
     setTimeout(() => {
-      // game won
+        // game won
       if (found === 6) alert("congrats");
     }, 600);
-  } // cards don't match
-  else {
+} // cards don't match
+else {
+      updateGuessCount();
     updateWrongGuessCount(comp);
     unflip();
   }
@@ -77,8 +79,8 @@ cards.forEach((card) => {
 });
 
 function updateGuessCount() {
-  let guessCount = 0;
-  guessCount.textContent++;
+    guessTotalCounter++;
+  guessCount.textContent = guessTotalCounter;
 }
 
 // Jihad work ^^^^...............................

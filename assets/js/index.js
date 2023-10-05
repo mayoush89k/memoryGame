@@ -1,23 +1,25 @@
-// Mira 
-const resetCardGame = document.getElementById("resetButton");
-resetCardGame.addEventListener("click", resetGame);
-
-function resetGame() {
-    window.location.reload()
-    };
-
-// Mira
 //Jihad Work .....
 const cards = document.querySelectorAll(".memory-card");
+let hasFlippedCard = false;
+let lockBoard = false;
+let firstCard;
 
+function flipCard() {
+    if (lockBoard || this === firstCard) return;
+  
+    this.classList.add("flip");
+  
+    if (!hasFlippedCard) {
+      hasFlippedCard = true;
+      firstCard = this;
+      return;
+    }
+
+  }
+  // Add click event listeners directly to each card
 cards.forEach((card) => {
-  card.addEventListener("click", (e) => {
-    const imgb = card.children[0];
-    imgb.setAttribute("class", "back-face");
-    const imgf = card.children[1];
-    imgf.setAttribute("class", "front-face");
+    card.addEventListener("click", flipCard);
   });
-});
 // Jihad work
 // May
 //save all images name

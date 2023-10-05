@@ -26,7 +26,7 @@ function resetSelection() {
   firstCard = null;
   secondCard = null;
 }
-
+let found = 0;
 //create a function as (event) to flip the cards
 function flipCard() {
   if (lockBoard || this === firstCard) return;
@@ -43,18 +43,34 @@ function flipCard() {
   console.log("comp: ", comp);
   if (comp) {
     // both cards match
-    firstCard.removeEventListener("click");
-    secondCard.removeEventListener("click");
+    // updateGuessCount();
+    firstCard.removeEventListener("click", flipCard);
+    secondCard.removeEventListener("click", flipCard);
+    resetSelection();
+    found++;
+    setTimeout(() => {
+      // game won
+      if (found === 6) alert("congrats");
+    }, 600);
   } // cards don't match
   else {
     updateWrongGuessCount(comp);
     unflip();
-    //todo: implement unflip()
   }
-
-  resetSelection();
 }
-
+function unflip() {
+  /**
+   * 1 lockboard + delay
+   * 2 reflip selected cards
+   * 3 reset selection
+   */
+  lockBoard = true;
+  setTimeout(() => {
+    firstCard.classList.remove("flip");
+    secondCard.classList.remove("flip");
+    resetSelection();
+  }, 1500);
+}
 // Add click event listeners directly to each card
 cards.forEach((card) => {
   card.addEventListener("click", flipCard);
@@ -97,22 +113,4 @@ function compareCards(a, b) {
   let nameB = b.getAttributeNode(["data-name"]).textContent;
   if (nameA === nameB) return true;
   else return false;
-}
-
-/**
- *  click -> if(!busy) if(!flipped) -- > ( timeout )->  compare ->
- *  compare -> add Guess () + keepimgsFlipped --> check if all are flipped (Game Won)
- *  ->
- */
-
-/**
- * if 2 cards are slected
- * pervent other cards form being selectable
- */
-
-function resetSelection() {
-  busy = false;
-  cardFlipped = false;
-  firstCard = null;
-  secondCard = null;
 }

@@ -39,7 +39,20 @@ function flipCard() {
   secondCard = this;
   let comp = compareCards(firstCard, secondCard);
   console.log("comp: ", comp);
+  if (comp) {
+    // both cards match
+    firstCard.removeEventListener("click");
+    secondCard.removeEventListener("click");
+  } // cards don't match
+  else {
+    updateWrongGuessCount(comp);
+    unflip();
+    //todo: implement unflip()
+  }
+
+  resetSelection();
 }
+
 // Add click event listeners directly to each card
 cards.forEach((card) => {
   card.addEventListener("click", flipCard);

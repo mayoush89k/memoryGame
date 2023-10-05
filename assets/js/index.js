@@ -1,22 +1,32 @@
-// Mira 
+// Mira
 const resetCardGame = document.getElementById("resetButton");
 resetCardGame.addEventListener("click", resetGame);
 
 function resetGame() {
-    window.location.reload()
-    };
+  window.location.reload();
+}
 
 // Mira
 //Jihad Work .....
 const cards = document.querySelectorAll(".memory-card");
+let hasFlippedCard = false;
+let lockBoard = false;
+let firstCard, secondCard;
 
+function flipCard() {
+  if (lockBoard || this === firstCard) return;
+
+  this.classList.add("flip");
+
+  if (!hasFlippedCard) {
+    hasFlippedCard = true;
+    firstCard = this;
+    return;
+  }
+}
+// Add click event listeners directly to each card
 cards.forEach((card) => {
-  card.addEventListener("click", (e) => {
-    const imgb = card.children[0];
-    imgb.setAttribute("class", "back-face");
-    const imgf = card.children[1];
-    imgf.setAttribute("class", "front-face");
-  });
+  card.addEventListener("click", flipCard);
 });
 // Jihad work
 // May
@@ -35,3 +45,48 @@ cards.forEach(card => {
 })
 
 // May
+// zaid's work ******************
+console.log("cards: ", cards);
+
+cards.forEach((card) => {
+  console.log(card.getAttributeNode(["data-name"]).textContent);
+  // add flag: flipped = false
+});
+
+// compare 2 cards
+function compareCards(a, b) {
+  let nameA = a.getAttributeNode(["data-name"]).textContent;
+  let nameB = b.getAttributeNode(["data-name"]).textContent;
+  if (nameA === nameB) return true;
+  else return false;
+}
+
+/**
+ *  click -> if(!busy) if(!flipped) -- > ( timeout )->  compare ->
+ *  compare -> add Guess () + keepimgsFlipped --> check if all are flipped (Game Won)
+ *  ->
+ */
+
+/**
+ * if 2 cards are slected
+ * pervent other cards form being selectable
+ */
+
+function resetSelection() {
+  busy = false;
+  cardFlipped = false;
+  firstCard = null;
+  secondCard = null;
+}
+
+function flipCard(e) {}
+
+//Mira
+
+  const wrongGuess= document.getElementById("wrongGuessCount")
+  function updateWrongGuessCount(a, b) {
+    if (compareCards(a, b) == false) {
+      wrongGuess.textContent++; 
+    };}
+   
+//Mira 

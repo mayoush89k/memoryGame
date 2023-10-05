@@ -2,6 +2,7 @@
     font-family: Teko;
     src: url("../fonts/Teko.ttf");
 }
+
 @font-face {
     font-family: Teko-b;
     src: url("../fonts/Teko-Medium.ttf");
@@ -68,7 +69,7 @@ h1 {
     width: 100%;
     position: absolute;
     object-fit: cover;
-    backface-visibility: hidden;
+    backface-visibility: visible;
 }
 
 .memory-card:active {
@@ -81,7 +82,7 @@ h1 {
     transition: transform 0.5s;
   }
   
-  .memory-card.flip {
+.memory-card.flip {
     transform: rotateY(180deg) perspective(1000px);
   }
 

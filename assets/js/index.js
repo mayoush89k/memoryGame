@@ -16,6 +16,7 @@ function updateWrongGuessCount(compareVal) {
 // Mira
 //Jihad Work .....
 const cards = document.querySelectorAll(".memory-card");
+const guessCount = document.getElementById("guessCount");
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
@@ -26,6 +27,7 @@ function resetSelection() {
   secondCard = null;
 }
 
+//create a function as (event) to flip the cards
 function flipCard() {
   if (lockBoard || this === firstCard) return;
 
@@ -57,6 +59,12 @@ function flipCard() {
 cards.forEach((card) => {
   card.addEventListener("click", flipCard);
 });
+
+function updateGuessCount() {
+  let guessCount = 0;
+  guessCount.textContent++;
+}
+
 // Jihad work
 // May
 //save all cards

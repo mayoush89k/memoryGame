@@ -7,8 +7,8 @@ function resetGame() {
 }
 
 const wrongGuess = document.getElementById("wrongGuessCount");
-function updateWrongGuessCount(a, b) {
-  if (compareCards(a, b) == false) {
+function updateWrongGuessCount(compareVal) {
+  if (compareVal == false) {
     wrongGuess.textContent++;
   }
 }
@@ -20,7 +20,12 @@ const guessCount = document.getElementById("guessCount");
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
-
+function resetSelection() {
+  lockBoard = false;
+  hasFlippedCard = false;
+  firstCard = null;
+  secondCard = null;
+}
 
 //create a function as (event) to flip the cards
 function flipCard() {
@@ -36,8 +41,19 @@ function flipCard() {
   secondCard = this;
   let comp = compareCards(firstCard, secondCard);
   console.log("comp: ", comp);
-}
+  if (comp) {
+    // both cards match
+    firstCard.removeEventListener("click");
+    secondCard.removeEventListener("click");
+  } // cards don't match
+  else {
+    updateWrongGuessCount(comp);
+    unflip();
+    //todo: implement unflip()
+  }
 
+  resetSelection();
+}
 
 // Add click event listeners directly to each card
 cards.forEach((card) => {
@@ -45,8 +61,8 @@ cards.forEach((card) => {
 });
 
 function updateGuessCount() {
- let guessCount = o;
- guessCount.textContent++;
+  let guessCount = 0;
+  guessCount.textContent++;
 }
 
 // Jihad work
@@ -92,10 +108,3 @@ function compareCards(a, b) {
  * if 2 cards are slected
  * pervent other cards form being selectable
  */
-
-function resetSelection() {
-  busy = false;
-  cardFlipped = false;
-  firstCard = null;
-  secondCard = null;
-}

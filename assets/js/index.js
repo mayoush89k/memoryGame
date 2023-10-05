@@ -1,26 +1,34 @@
+// Mira
+const resetCardGame = document.getElementById("resetButton");
+resetCardGame.addEventListener("click", resetGame);
+
+function resetGame() {
+  window.location.reload();
+}
+
+// Mira
 //Jihad Work .....
 const cards = document.querySelectorAll(".memory-card");
 let hasFlippedCard = false;
 let lockBoard = false;
-let firstCard;
+let firstCard, secondCard;
 
 //create a function as (event) to flip the cards
 function flipCard() {
-    if (lockBoard || this === firstCard) return;
-  
-    this.classList.add("flip");
-  
-    if (!hasFlippedCard) {
-      hasFlippedCard = true;
-      firstCard = this;
-      return;
-    }
+  if (lockBoard || this === firstCard) return;
 
+  this.classList.add("flip");
+
+  if (!hasFlippedCard) {
+    hasFlippedCard = true;
+    firstCard = this;
+    return;
   }
-  // Add click event listeners directly to each card
+}
+// Add click event listeners directly to each card
 cards.forEach((card) => {
-    card.addEventListener("click", flipCard);
-  });
+  card.addEventListener("click", flipCard);
+});
 // Jihad work
 // May
 //save all images name
@@ -48,3 +56,38 @@ images.forEach((image) => {
 });
 
 // May
+// zaid's work ******************
+console.log("cards: ", cards);
+
+cards.forEach((card) => {
+  console.log(card.getAttributeNode(["data-name"]).textContent);
+  // add flag: flipped = false
+});
+
+// compare 2 cards
+function compareCards(a, b) {
+  let nameA = a.getAttributeNode(["data-name"]).textContent;
+  let nameB = b.getAttributeNode(["data-name"]).textContent;
+  if (nameA === nameB) return true;
+  else return false;
+}
+
+/**
+ *  click -> if(!busy) if(!flipped) -- > ( timeout )->  compare ->
+ *  compare -> add Guess () + keepimgsFlipped --> check if all are flipped (Game Won)
+ *  ->
+ */
+
+/**
+ * if 2 cards are slected
+ * pervent other cards form being selectable
+ */
+
+function resetSelection() {
+  busy = false;
+  cardFlipped = false;
+  firstCard = null;
+  secondCard = null;
+}
+
+function flipCard(e) {}

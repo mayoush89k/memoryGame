@@ -23,6 +23,9 @@ function flipCard() {
     firstCard = this;
     return;
   }
+  secondCard = this;
+  let comp = compareCards(firstCard, secondCard);
+  console.log("comp: ", comp);
 }
 // Add click event listeners directly to each card
 cards.forEach((card) => {
@@ -88,5 +91,3 @@ function resetSelection() {
   firstCard = null;
   secondCard = null;
 }
-
-function flipCard(e) {}

@@ -69,22 +69,23 @@ h1 {
     width: 100%;
     position: absolute;
     object-fit: cover;
-    backface-visibility: visible;
+    backface-visibility: hidden;
 }
 
 .memory-card:active {
     transform: scale(0.97);
     transition: transform 0.15s ease-out;
 }
+
 /*Jihad*/
 .memory-card {
     transform-style: preserve-3d;
     transition: transform 0.5s;
-  }
-  
+}
+
 .memory-card.flip {
     transform: rotateY(180deg) perspective(1000px);
-  }
+}
 
 .front-face {
     transform: rotateY(0.5turn);

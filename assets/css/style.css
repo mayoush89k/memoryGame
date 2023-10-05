@@ -75,6 +75,15 @@ h1 {
     transform: scale(0.97);
     transition: transform 0.15s ease-out;
 }
+/*Jihad*/
+.flip-card {
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+  }
+  
+  .flip-card.flip {
+    transform: rotateY(180deg);
+  }
 
 .front-face {
     transform: rotateY(0.5turn);

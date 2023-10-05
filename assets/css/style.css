@@ -82,7 +82,7 @@ h1 {
     transition: transform 0.5s;
   }
   
-  .memory-card.flip {
+.memory-card.flip {
     transform: rotateY(180deg) perspective(1000px);
   }
 

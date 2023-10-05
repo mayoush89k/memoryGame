@@ -4,6 +4,7 @@ let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard;
 
+//create a function as (event) to flip the cards
 function flipCard() {
     if (lockBoard || this === firstCard) return;
   
